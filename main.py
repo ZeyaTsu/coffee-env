@@ -1,20 +1,42 @@
 import time
 import env
 
+
 #ext = '.cfe'
 #mode = 't'
 cs = 't'
 error = 0
 
+prefix = None
+
+r = ["reload"]
 
 def console():
     global error
     global cs
+    global prefix
 
     if cs == 't':
         while cs == 't':
-            uinput = str(input("> "))
-            exec(uinput)
+            if prefix == None:
+                prefix = str(input("P > "))
+            if prefix == "leave":
+                print("... Goodbye. ...")
+                bar = '█'
+                for i in range(1, 20):
+                    time.sleep(0.02)
+                    print(bar, end="")
+                break
+
+            uinput = str(input(f"{prefix} > "))
+
+            if uinput in r:
+                prefix = None
+                main()
+            
+
+            finput = prefix + "." + uinput
+            exec(finput)
     elif cs != 't' and error == 0:
         error += 1 
         
@@ -26,7 +48,6 @@ def console():
 def main(): 
     global error
     global cs
-    
     
     print("... Coffe Env. ...")
     bar = '█'
@@ -52,3 +73,4 @@ launch = 0
 if launch == 0:
     if __name__ == '__main__':
         main()
+        launch += 1
