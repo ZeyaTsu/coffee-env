@@ -1,0 +1,7 @@
+--env:Current environment: Coffee (CoffeEnv)
+
+--ver:Beta 0.4
+
+--cs:'t' code = 1 
+
+--error: Error code are specified in () after error message. Here's a list of all error codes possible in CoffeEnv: (0) = False | (1) = True 
